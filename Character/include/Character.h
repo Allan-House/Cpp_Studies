@@ -13,6 +13,7 @@ class Character {
     uint8_t defense_;
   public:
     Character();
+    Character (const std::string& name, uint8_t level);
     ~Character();
 
     void Attack();
