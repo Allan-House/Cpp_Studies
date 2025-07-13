@@ -18,7 +18,7 @@ int main() {
   deposit(accounts, 1000.00);
   withdraw(accounts, 2000.00);
 
-  // Savings
+  // Savings Accounts
   std::vector<SavingsAccount> savings_accounts;
   savings_accounts.push_back(SavingsAccount{});
   savings_accounts.push_back(SavingsAccount{"Superman"});
@@ -28,5 +28,17 @@ int main() {
   display(savings_accounts);
   deposit(savings_accounts, 1000.00);
   withdraw(savings_accounts, 2000.00);
+
+  // Checking Accounts
+  std::vector<CheckingAccount> checking_accounts;
+  checking_accounts.push_back(CheckingAccount{});
+  checking_accounts.push_back(CheckingAccount{"A"});
+  checking_accounts.push_back(CheckingAccount{"B", 2000.00});
+  checking_accounts.push_back(CheckingAccount{"C", 5000.00, 5.0});
+
+  display(checking_accounts);
+  deposit(checking_accounts, 1000.00);
+  withdraw(checking_accounts, 2000.00);
+
   return 0;
 }

@@ -8,8 +8,8 @@ class Account {
   friend std::ostream& operator<<(std::ostream& os, const Account& account);
   private:
     static constexpr const char *default_name = "Unnamed Account";
-    static constexpr double default_balance = 0.0;
   protected:
+    static constexpr double default_balance = 0.0;
     std::string name_;
     double balance_;
   public:

@@ -4,7 +4,7 @@ You are provided with a simple Account class hierarchy that contains
 - Account - base class.
 - Savings Account - derived class.
 
-An Account has a name and a balance.A Savings Account is an Account and adds an interest rate.
+An Account has a name and a balance. A Savings Account is an Account and adds an interest rate.
 
 I have also provided some Account helper functions in AccountUtils.h and AccountUtils.cpp
 that make it easy to display, deposit to, and withdraw from a vector of Accounts and Savings Accounts.
@@ -24,10 +24,8 @@ Your challenge is the following:
     The Trust account withdrawal should only allow 3 withdrawals per year and each of these must be less than 20% of the account balance. You don't have to keep track of calendar time for this application, just make sure the 4th withdrawal fails.
     
 Hints:
-
-- Reuse existing functionality!!  
+- Reuse existing functionality!!
 - Think about what the Base class will be for the new classes.
 - Add helper functions to AccountUtils.h and AccountUtils.cpp if you wish to work with your new classes (you don't have to, but it will make your main much easier to use).
-    
 
 If you want more practice with operator overloading you can overload += and -= for deposit and withdrawal.
