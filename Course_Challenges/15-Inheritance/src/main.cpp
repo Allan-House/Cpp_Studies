@@ -10,9 +10,9 @@ int main() {
   // Accounts
   std::vector<Account> accounts;
   accounts.push_back(Account{});
-  accounts.push_back(Account{"Larry"});
-  accounts.push_back(Account{"Moe", 2000.00});
-  accounts.push_back(Account{"Curly", 5000.00});
+  accounts.push_back(Account{"Alex"});
+  accounts.push_back(Account{"Ana", 2000.00});
+  accounts.push_back(Account{"Bruno", 5000.00});
 
   display(accounts);
   deposit(accounts, 1000.00);
@@ -21,9 +21,9 @@ int main() {
   // Savings Accounts
   std::vector<SavingsAccount> savings_accounts;
   savings_accounts.push_back(SavingsAccount{});
-  savings_accounts.push_back(SavingsAccount{"Superman"});
-  savings_accounts.push_back(SavingsAccount{"Batman", 2000.00});
-  savings_accounts.push_back(SavingsAccount{"Wonder Woman", 5000.00, 5.0});
+  savings_accounts.push_back(SavingsAccount{"Beatriz"});
+  savings_accounts.push_back(SavingsAccount{"Carlos", 2000.00});
+  savings_accounts.push_back(SavingsAccount{"Clara", 5000.00, 5.0});
   
   display(savings_accounts);
   deposit(savings_accounts, 1000.00);
@@ -32,13 +32,24 @@ int main() {
   // Checking Accounts
   std::vector<CheckingAccount> checking_accounts;
   checking_accounts.push_back(CheckingAccount{});
-  checking_accounts.push_back(CheckingAccount{"A"});
-  checking_accounts.push_back(CheckingAccount{"B", 2000.00});
-  checking_accounts.push_back(CheckingAccount{"C", 5000.00, 5.0});
+  checking_accounts.push_back(CheckingAccount{"Diego"});
+  checking_accounts.push_back(CheckingAccount{"Diana", 2000.00});
+  checking_accounts.push_back(CheckingAccount{"Eduardo", 5000.00});
 
   display(checking_accounts);
   deposit(checking_accounts, 1000.00);
   withdraw(checking_accounts, 2000.00);
+
+  // Trust Accounts
+  std::vector<TrustAccount> trust_accounts;
+  trust_accounts.push_back(TrustAccount{});
+  trust_accounts.push_back(TrustAccount{"Elena"});
+  trust_accounts.push_back(TrustAccount{"Felipe", 2000.00});
+  trust_accounts.push_back(TrustAccount{"Fernanda", 5000.00, 5.0});
+
+  display(trust_accounts);
+  deposit(trust_accounts, 1000.00);
+  withdraw(trust_accounts, 2000.00);
 
   return 0;
 }

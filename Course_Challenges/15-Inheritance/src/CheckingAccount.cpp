@@ -1,20 +1,15 @@
 #include "CheckingAccount.h"
 
-CheckingAccount::CheckingAccount(std::string name, double balance, double fee)
-  : Account::Account{name, balance}, fee_{fee} {
+CheckingAccount::CheckingAccount(std::string name, double balance)
+  : Account::Account{name, balance} {
 }
 
 bool CheckingAccount::withdraw(double amount) {
-  if ((amount + fee_) > balance_) {
-    return false;
-  }
-  else {
-    balance_ -= (amount + fee_);
-    return true;
-  }
+  amount += default_fee;
+  return Account::withdraw(amount);
 }
 
 std::ostream& operator<<(std::ostream& os, const CheckingAccount& account) {
-  os << "[Checking Account: " << account.name_ << " : $" << account.balance_ << ", $" << account.fee_ << "]";
+  os << "[Checking Account: " << account.name_ << " : $" << account.balance_ << "]";
   return os;
 }

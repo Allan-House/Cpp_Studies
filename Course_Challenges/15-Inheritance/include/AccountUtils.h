@@ -5,6 +5,7 @@
 #include "Account.h"
 #include "SavingsAccount.h"
 #include "CheckingAccount.h"
+#include "TrustAccount.h"
 
 // Utility functions for Account class
 void display(const std::vector<Account>& accounts);
@@ -20,4 +21,9 @@ void withdraw(std::vector<SavingsAccount>& accounts, double amount);
 void display(const std::vector<CheckingAccount>& accounts);
 void deposit(std::vector<CheckingAccount>& accounts, double amount);
 void withdraw(std::vector<CheckingAccount>& accounts, double amount);
+
+// Utility functions for Trust Account class
+void display(const std::vector<TrustAccount>& accounts);
+void deposit(std::vector<TrustAccount>& accounts, double amount);
+void withdraw(std::vector<TrustAccount>& accounts, double amount);
 #endif
