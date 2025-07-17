@@ -1,6 +1,6 @@
 # Section 16 Challenge - Polymorphism
 
-You are provided with a completed Account class hierarchy that was completed in Section 1. The provided class hierarchy does not use dynamic polymorphism (it has no virtual functions!)
+You are provided with a completed Account class hierarchy that was completed in Section 15. The provided class hierarchy does not use dynamic polymorphism (it has no virtual functions!)
 
 Your challenge is the following:
 
