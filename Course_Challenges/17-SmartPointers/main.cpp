@@ -12,18 +12,37 @@ class Test {
     ~Test() {}
 };
 
+void fill(std::vector<std::shared_ptr<Test>>& vec, int num);
+std::unique_ptr<std::vector<std::shared_ptr<Test>>> make();
+void display(std::vector<std::shared_ptr<Test>>& vec);
+
+int main() {
+  std::unique_ptr<std::vector<std::shared_ptr<Test>>> ptr = make();
+  std::cout << "How many data points do you want to enter: ";
+  int num;
+  std::cin >> num;
+  fill(*ptr, num);
+  display(*ptr);
+  return 0;
+}
+
 std::unique_ptr<std::vector<std::shared_ptr<Test>>> make() {
   return std::make_unique<std::vector<std::shared_ptr<Test>>>();
 }
 
-/*
-A function named "fill" that expects a vector of shared pointers to Test objects and an int representing the number of Test objects 
-to create dynamically and add to the vector. This function will prompr the user to enter an integer,
-create a shared pointers to a Test object initialized to the entered integer and add that shared pointer to the vector.
-*/
+void fill(std::vector<std::shared_ptr<Test>>& vec, int num) {
+  int temp;
+  for (int i = 1; i <= num; i++) {
+    std::cout << "Enter data point [" << i << "] : ";
+    std::cin >> temp; 
+    vec.push_back(std::make_shared<Test>(temp));
+  }
+}
 
-
-int main() {
-
-  return 0;
+void display(std::vector<std::shared_ptr<Test>>& vec) {
+  std:: cout << "vector = { ";
+  for (const auto &ptr : vec) {
+    std::cout << ptr->get_data() << " ";
+  }
+  std::cout << "}" << std::endl;
 }
