@@ -27,22 +27,22 @@ int main() {
   vector_2d.push_back(vector1);
   vector_2d.push_back(vector2);
   std::cout << std::endl << "2D Vector:" << std::endl;
-  for (std::vector<int> &vec : vector_2d) {
-    for (int i = 0; i < vec.size(); i++) {
-      std::cout << vec.at(i) << " ";
+  for (size_t i = 0; i < vector_2d.size(); i++) {
+    for (size_t j = 0; j < vector_2d.at(i).size(); j++) {
+      std::cout << vector_2d.at(i).at(j) << " ";
     }
-    std::cout << std::endl;
+  std::cout << std::endl;
   }
 
   vector1.at(0) = 1000;
   std::cout << std::endl << "Vector 1 at (0) = 1000" << std::endl;
 
   std::cout << std::endl << "2D Vector:" << std::endl;
-  for (std::vector<int> &vec : vector_2d) {
-    for (int i = 0; i < vec.size(); i++) {
-      std::cout << vec.at(i) << " ";
+  for (size_t i = 0; i < vector_2d.size(); i++) {
+    for (size_t j = 0; j < vector_2d.at(i).size(); j++) {
+      std::cout << vector_2d.at(i).at(j) << " ";
     }
-    std::cout << std::endl;
+  std::cout << std::endl;
   }
 
   return 0;
