@@ -1,4 +1,6 @@
+#include <cctype>
 #include <iostream>
+#include <limits>
 #include <list>
 #include <string>
 #include <iomanip>
@@ -11,7 +13,7 @@ class Song {
   std::string band_;
 
   public:
-  Song();
+  Song() = default;
   Song(std::string name, std::string band)
     : name_ {name}, band_ {band} {}
   
@@ -44,75 +46,66 @@ void display_menu() {
   std::cout << " Enter a selection (Q to quit): ";
 }
 
-void play_first_song(std::list<Song>& l,
-                     std::list<Song>::iterator& it)
-{
-  it = l.begin();
-  std::cout << "Playing: " << l.front() << std::endl;
+void play_current_song(const Song& song) {
+  std::cout << "Playing: " << song << std::endl;
 }
 
-void play_next_song(std::list<Song>& l,
-                    std::list<Song>::iterator& it)
-{
-  std::cout << "Playing: " << *(++it) << std::endl;
-}
-
-void play_previous_song(std::list<Song>& l,
-                        std::list<Song>::iterator& it)
-{
-  std::cout << "Playing: " << *(--it) << std::endl;
-}
-
-void add_and_play_song(std::list<Song>& l,
-                       std::list<Song>::iterator& it)
+void add_and_play_song(std::list<Song>& playlist,
+                       std::list<Song>::iterator& current_song)
 {
   std::string name, band;
+  std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
   std::cout << "Enter song name: ";
-  std::cin >> name;
+  std::getline(std::cin, name);
   std::cout << "Enter song band: ";
-  std::cin >> band;
-  l.emplace(++it, Song(name, band));
-  it--;
-  play_next_song(l, --it);
+  std::getline(std::cin, band);
+  playlist.emplace(++current_song, Song(name, band));
+  current_song--;
+  play_current_song(*current_song);
 }
 
-void display_playlist(std::list<Song>& l) {
-  for (Song& s: l) {
-    std::cout << s << std::endl;
+void display_playlist(const std::list<Song>& playlist) {
+  for (const Song& song: playlist) {
+    std::cout << song << std::endl;
   }
   std::cout << std::endl;
 }
 
 int main() {
+  std::cout << "Welcome to your music player!!" << std::endl;
+  
   std::list<Song> playlist {
     {"Nude", "Radiohead"},
     {"Time", "Pink Floyd"},
     {"Deadwing", "Porcupine Tree"},
     {"The Smoke", "The Smile"},
     {"Concorde", "BCNR"},
-    {"Starles", "King Crimson"}
+    {"Starless", "King Crimson"}
   };
-  std::list<Song>::iterator it {playlist.begin()};
+  std::list<Song>::iterator current_song {playlist.begin()};
+  display_playlist(playlist);
 
-  std::cout << "Welcome to your music player!!" << std::endl;
   bool keep_running {true};
-  char choice {' '};
-
+  char selection {};
   while (keep_running) {
     display_menu();
-    std::cin >> choice;
-    switch (choice) {
+    std::cin >> selection;
+    selection = std::toupper(selection);
+    switch (selection) {
       case 'F':
-        play_first_song(playlist, it);
+        current_song = playlist.begin();
+        play_current_song(*current_song);
         break;
       case 'N':
-        play_next_song(playlist, it);
+        current_song++;
+        play_current_song(*current_song);
         break;
       case 'P':
-        play_previous_song(playlist, it);
+        current_song--;
+        play_current_song(*current_song);
         break;
       case 'A':
-        add_and_play_song(playlist, it);
+        add_and_play_song(playlist, current_song);
         break;
       case 'L':
         display_playlist(playlist);
